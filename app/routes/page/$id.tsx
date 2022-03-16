@@ -4,12 +4,16 @@ import { API_BASE } from '~/constants';
 import Pagenation from '~/components/pagenation';
 import { styles } from '~/styles/posts';
 
-export const loader = async () => {
-  const res = await fetch(`${API_BASE}/cats?skip=0&limit=10`);
+type Params = Record<'id', string | undefined>;
+
+export const loader = async ({ params }: { params: Params }) => {
+  const res = await fetch(
+    `${API_BASE}/cats?skip=${Number(params.id) * 10}&limit=10`
+  );
   return await res.json();
 };
 
-export default function Index() {
+export default function Page() {
   const cats = useLoaderData<Cats[]>();
 
   return (

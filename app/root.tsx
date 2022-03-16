@@ -5,11 +5,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "remix";
-import type { MetaFunction } from "remix";
+} from 'remix';
+import type { MetaFunction } from 'remix';
+import Header from '~/components/header';
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: 'New Remix App' };
 };
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Header />
         <Outlet />
         <ScrollRestoration />
         <Scripts />

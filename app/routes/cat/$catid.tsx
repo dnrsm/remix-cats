@@ -26,24 +26,43 @@ const styles: Record<string, CSSProperties> = {
   text: {
     wordBreak: 'break-all',
   },
+  copyButton: {
+    marginBottom: '30px',
+  },
 };
 
 export default function Catid() {
   const { catid } = useParams();
+
+  const copyTextToClipboard = async (text: string) => {
+    if (!navigator.clipboard) {
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error('Could not copy text: ', err);
+    }
+  };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
         <img
           style={styles.img}
-          // src={`https://cataas.com/cat/${catid}?width=600`}
-          src={`https://cataas.com/cat/${catid}`}
+          src={`https://cataas.com/cat/${catid}/says/LGTM`}
           alt={catid}
         />
         <a style={styles.link} href={`https://cataas.com/cat/${catid}`}>
-          Image
+          Normal Image
         </a>
         <p style={styles.text}>{`https://cataas.com/cat/${catid}`}</p>
+        <button
+          style={styles.copyButton}
+          onClick={() => copyTextToClipboard(`https://cataas.com/cat/${catid}`)}
+        >
+          COPY URL
+        </button>
         <a
           style={styles.link}
           href={`https://cataas.com/cat/${catid}/says/LGTM`}
@@ -51,6 +70,13 @@ export default function Catid() {
           Saying LGTM
         </a>
         <p style={styles.text}>{`https://cataas.com/cat/${catid}/says/LGTM`}</p>
+        <button
+          onClick={() =>
+            copyTextToClipboard(`https://cataas.com/cat/${catid}/says/LGTM`)
+          }
+        >
+          COPY URL
+        </button>
       </div>
     </div>
   );

@@ -7,10 +7,11 @@ import {
   ScrollRestoration,
 } from 'remix';
 import type { MetaFunction } from 'remix';
-import Header from '~/components/header';
+import { Header } from '~/components/header';
+import { Footer } from '~/components/footer';
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' };
+  return { title: 'LGTM Cat' };
 };
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
       <body>
         <Header />
         <Outlet />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

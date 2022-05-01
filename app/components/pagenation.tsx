@@ -21,22 +21,20 @@ const styles: Record<string, CSSProperties> = {
   },
 };
 
-export const Pagenation = () => {
+type Props = {
+  isLastPage: boolean;
+};
+
+export const Pagenation: React.VFC<Props> = ({ isLastPage }) => {
   const { id } = useParams();
   const numId = Number(id);
-  const lastId = 76;
-  const isLastPage = numId === 76;
-  const prev = id ? (isLastPage ? lastId - 2 : numId - 1) : 1;
-  const current = id ? (isLastPage ? lastId - 1 : numId) : 2;
-  const next = id ? (isLastPage ? lastId : numId + 1) : 3;
+  const isFirstPage = !id;
+  const prev = isFirstPage ? 1 : isLastPage ? numId - 2 : numId - 1;
+  const current = isFirstPage ? 2 : isLastPage ? numId - 1 : numId;
+  const next = isFirstPage ? 3 : isLastPage ? numId : numId + 1;
 
   return (
     <ul style={styles.list}>
-      <li style={styles.item}>
-        <Link style={styles.link} to={'/'}>
-          {'<<'}
-        </Link>
-      </li>
       <li style={styles.item}>
         <Link style={styles.link} to={`/page/${prev}`}>
           {'<'}
@@ -57,16 +55,13 @@ export const Pagenation = () => {
           {next}
         </Link>
       </li>
-      <li style={styles.item}>
-        <Link style={styles.link} to={`/page/${next}`}>
-          {'>'}
-        </Link>
-      </li>
-      <li style={styles.item}>
-        <Link style={styles.link} to={'/page/76'}>
-          {'>>'}
-        </Link>
-      </li>
+      {!isLastPage && (
+        <li style={styles.item}>
+          <Link style={styles.link} to={`/page/${next}`}>
+            {'>'}
+          </Link>
+        </li>
+      )}
     </ul>
   );
 };

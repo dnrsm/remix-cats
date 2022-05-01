@@ -5,6 +5,7 @@ const styles: Record<string, CSSProperties> = {
   container: {
     maxWidth: '1200px',
     margin: '0 auto',
+    paddingBottom: '60px',
   },
   card: {
     display: 'flex',

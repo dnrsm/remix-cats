@@ -6,8 +6,8 @@ const styles: Record<string, CSSProperties> = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '60px 0',
     padding: '0',
+    paddingBottom: '60px',
   },
   item: {
     listStyleType: 'none',

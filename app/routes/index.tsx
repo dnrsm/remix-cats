@@ -1,13 +1,13 @@
-import { useLoaderData } from 'remix';
+import { useLoaderData, LoaderFunction } from 'remix';
 import type { Cat } from '~/types';
 import { API_BASE } from '~/constants';
 import { Pagenation } from '~/components/pagenation';
 import { List } from '~/components/list';
 import { styles } from '~/styles/posts';
 
-export const loader = async () => {
+export const loader: LoaderFunction = async () => {
   const res = await fetch(`${API_BASE}/cats?skip=0&limit=10`);
-  return await res.json();
+  return res;
 };
 
 export default function Index() {

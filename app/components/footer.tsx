@@ -4,7 +4,8 @@ const styles: Record<string, CSSProperties> = {
   footer: {
     textAlign: 'center',
     fontSize: '12px',
-    marginBottom: '12px',
+    marginTop: 'auto',
+    paddingBottom: '8px',
   },
 };
 

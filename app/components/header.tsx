@@ -5,7 +5,8 @@ const styles: Record<string, CSSProperties> = {
   header: {
     maxWidth: '1200px',
     width: '100%',
-    margin: '20px auto',
+    margin: '0 auto',
+    padding: '20px 0',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',

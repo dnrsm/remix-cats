@@ -1,17 +1,15 @@
-import { useLoaderData } from 'remix';
+import { useLoaderData, LoaderFunction } from 'remix';
 import type { Cat } from '~/types';
 import { API_BASE } from '~/constants';
 import { Pagenation } from '~/components/pagenation';
 import { List } from '~/components/list';
 import { styles } from '~/styles/posts';
 
-type Params = Record<'id', string | undefined>;
-
-export const loader = async ({ params }: { params: Params }) => {
+export const loader: LoaderFunction = async ({ params }) => {
   const res = await fetch(
     `${API_BASE}/cats?skip=${Number(params.id) * 10}&limit=10`
   );
-  return await res.json();
+  return res;
 };
 
 export default function Page() {

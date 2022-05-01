@@ -21,7 +21,7 @@ const styles: Record<string, CSSProperties> = {
   },
 };
 
-export default function Pagenation() {
+export const Pagenation = () => {
   const { id } = useParams();
   const numId = Number(id);
   const lastId = 76;
@@ -69,4 +69,4 @@ export default function Pagenation() {
       </li>
     </ul>
   );
-}
+};

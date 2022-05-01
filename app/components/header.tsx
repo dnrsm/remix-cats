@@ -13,7 +13,7 @@ const styles: Record<string, CSSProperties> = {
   },
 };
 
-export default function Header() {
+export const Header = () => {
   return (
     <header style={styles.header}>
       <Link style={styles.link} to={`/`}>
@@ -21,4 +21,4 @@ export default function Header() {
       </Link>
     </header>
   );
-}
+};

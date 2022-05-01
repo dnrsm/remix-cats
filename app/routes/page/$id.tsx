@@ -3,7 +3,6 @@ import type { Cat } from '~/types';
 import { API_BASE } from '~/constants';
 import { Pagenation } from '~/components/pagenation';
 import { List } from '~/components/list';
-import { Title } from '~/components/title';
 import { styles } from '~/styles/posts';
 
 type Params = Record<'id', string | undefined>;
@@ -21,7 +20,6 @@ export default function Page() {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <main style={styles.container}>
-        <Title />
         <List cats={cats} />
         <Pagenation />
       </main>
